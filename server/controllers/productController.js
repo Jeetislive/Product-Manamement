@@ -2,8 +2,9 @@ import { Product } from '../models/product.js';
 import { moveFile, deleteFile } from '../services/s3Service.js';
 
 export const createProduct = async (request, res) => {
-  const { title, price, description, category, imageUrl } = request.payload;
-  console.log("====>");
+  const { name, price, description, category, imageUrl } = request.payload;
+  // console.log("====>");
+  const title = name;
   
 
   let finalImageUrl = imageUrl;
@@ -24,7 +25,7 @@ export const createProduct = async (request, res) => {
     category,
     image: finalImageUrl,
   });
-  console.log(product);
+  // console.log(product);
   
 
   return res.response(product).code(201);

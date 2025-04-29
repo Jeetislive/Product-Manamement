@@ -8,14 +8,22 @@ dotenv.config();
 const init = async () => {
   const server = Hapi.server({
     port: process.env.PORT || 8000,
-    host: 'localhost',
+    host: '0.0.0.0', // Changed from 'localhost'
     routes: {
-      cors: true,
+      cors: {
+        origin: ["*"],
+      },
     },
+  });
+  server.route({
+    method: 'GET',
+    path: '/',
+    handler: (request, h) => 'Hello, world!',
   });
 
   server.route(indexRoutes);
 
+  
   await sequelize.sync();
   console.log('Database connected!');
 

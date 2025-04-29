@@ -22,6 +22,7 @@ export const uploadTempImage = async (request, res) => {
     Key: s3Key,
     Body: image._data,
     ContentType: image.hapi.headers['content-type'],
+    ACL: 'public-read',
   };
 
   try {

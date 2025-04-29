@@ -7,7 +7,7 @@ export const uploadFile = async (file, key) => {
     Bucket: process.env.AWS_BUCKET_NAME,
     Key: key,
     Body: file.buffer,
-    // ACL: 'public-read',
+    ACL: 'public-read',
     ContentType: file.mimetype,
   }).promise();
 
@@ -19,7 +19,7 @@ export const moveFile = async (oldKey, newKey) => {
     Bucket: process.env.AWS_BUCKET_NAME,
     CopySource: `${process.env.AWS_BUCKET_NAME}/${oldKey}`,
     Key: newKey,
-    // ACL: 'public-read',
+    ACL: 'public-read',
   }).promise();
   await s3.deleteObject({
     Bucket: process.env.AWS_BUCKET_NAME,
