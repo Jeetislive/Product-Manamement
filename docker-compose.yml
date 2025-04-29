@@ -5,6 +5,7 @@ services:
     build:
       context: ./client
       dockerfile: Dockerfile
+    # image: jeetdockerize/productmanagement-client
     ports:
       - "4173:4173"
     depends_on:
@@ -16,6 +17,7 @@ services:
     build:
       context: ./server
       dockerfile: Dockerfile
+    # image: jeetdockerize/productmanagement-server
     ports:
       - "8001:8000"
     env_file:
